@@ -1,6 +1,6 @@
 # FINOVA · Finanzas personales
 
-Aplicación sencilla para registrar ingresos, gastos, préstamos, abonos y metas de ahorro. Usa Python estándar y SQLite; no requiere instalar paquetes externos.
+Aplicación sencilla para registrar ingresos, gastos, préstamos, abonos y metas de ahorro. En local usa Python estándar y SQLite; en Netlify usa una Function y PostgreSQL administrado.
 
 ## Ejecutar localmente
 
@@ -15,15 +15,15 @@ La primera ejecución crea `claro.sqlite3` junto a `server.py`. La base mantiene
 
 El proyecto incluye una versión del API como Netlify Function y un esquema PostgreSQL en `netlify/database/migrations/`. El frontend se publica desde `dist/`, que se genera con `npm run build`; Netlify ejecuta la migración cuando se conecta una base de Netlify al sitio.
 
-Para desplegarlo, conecta el repositorio a Netlify y crea una base en **Data & Storage → Database**. Netlify Database está disponible en planes de créditos y su cómputo/ancho de banda consume créditos. La base local `claro.sqlite3` no se migra automáticamente; los datos de prueba existentes deben exportarse e importarse si se quieren conservar.
+Para desplegarlo, conecta el repositorio a Netlify y crea una base en **Data & Storage → Database**. Configura la cadena **Read and write** de la rama `production` como variable secreta `NETLIFY_DB_URL`, solo para el contexto Production. Netlify aplica el esquema al desplegar. Netlify Database está disponible en planes de créditos y su cómputo/ancho de banda consume créditos. La base local `claro.sqlite3` no se migra automáticamente; los datos de prueba existentes deben exportarse e importarse si se quieren conservar.
 
 ## Datos y seguridad
 
 - Cada cuenta tiene sus propios movimientos, préstamos, metas y aportes.
 - Las contraseñas se guardan con PBKDF2-HMAC-SHA256 y una sal aleatoria.
 - La sesión usa una cookie `HttpOnly` y `SameSite=Strict`.
-- Las sesiones viven en memoria del servidor; al reiniciarlo habrá que iniciar sesión de nuevo.
-- El servidor está configurado para escuchar únicamente en `127.0.0.1`. Esta configuración es para uso local y no debe exponerse directamente a Internet. Para desplegarlo públicamente hace falta HTTPS, sesiones persistentes, configuración de producción y copias de seguridad.
+- En local, las sesiones viven en memoria del servidor; al reiniciarlo habrá que iniciar sesión de nuevo. En Netlify, las sesiones se guardan en la base PostgreSQL.
+- El servidor Python local está configurado para escuchar únicamente en `127.0.0.1`; no debe exponerse directamente a Internet.
 
 ## Archivos principales
 
