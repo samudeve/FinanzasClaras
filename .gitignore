@@ -19,3 +19,5 @@ venv/
 .DS_Store
 Thumbs.db
 .vscode/
+dist/
+node_modules/

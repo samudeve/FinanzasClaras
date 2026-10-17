@@ -1,0 +1,11 @@
+{
+  "name": "finova-finanzas",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "node build.mjs"
+  },
+  "dependencies": {
+    "@netlify/database": "latest"
+  }
+}

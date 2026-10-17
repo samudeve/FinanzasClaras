@@ -11,6 +11,12 @@ Aplicación sencilla para registrar ingresos, gastos, préstamos, abonos y metas
 
 La primera ejecución crea `claro.sqlite3` junto a `server.py`. La base mantiene los datos de forma local y no se incluye en Git.
 
+## Preparación para Netlify
+
+El proyecto incluye una versión del API como Netlify Function y un esquema PostgreSQL en `netlify/database/migrations/`. El frontend se publica desde `dist/`, que se genera con `npm run build`; Netlify ejecuta la migración cuando se conecta una base de Netlify al sitio.
+
+Para desplegarlo, conecta el repositorio a Netlify y crea una base en **Data & Storage → Database**. Netlify Database está disponible en planes de créditos y su cómputo/ancho de banda consume créditos. La base local `claro.sqlite3` no se migra automáticamente; los datos de prueba existentes deben exportarse e importarse si se quieren conservar.
+
 ## Datos y seguridad
 
 - Cada cuenta tiene sus propios movimientos, préstamos, metas y aportes.
