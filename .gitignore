@@ -1,0 +1,21 @@
+# Base local de SQLite y sus archivos auxiliares
+claro.sqlite3
+claro.sqlite3-journal
+claro.sqlite3-shm
+claro.sqlite3-wal
+
+# Python
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Configuración y secretos locales
+.env
+.env.*
+!.env.example
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
