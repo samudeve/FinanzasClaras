@@ -1,4 +1,4 @@
-# Claro · Finanzas personales
+# FINOVA · Finanzas personales
 
 Aplicación sencilla para registrar ingresos, gastos, préstamos, abonos y metas de ahorro. Usa Python estándar y SQLite; no requiere instalar paquetes externos.
 
@@ -25,4 +25,5 @@ La primera ejecución crea `claro.sqlite3` junto a `server.py`. La base mantiene
 - `styles.css`: estilos adaptables.
 - `app.js`: interfaz y comunicación con la API.
 - `server.py`: API HTTP y almacenamiento SQLite.
+- `finova-mark.svg`: símbolo vectorial de FINOVA usado como marca y favicon.
 - `claro.sqlite3`: base de datos local, creada al iniciar el servidor e ignorada por Git.

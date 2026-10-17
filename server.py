@@ -1,4 +1,4 @@
-"""Small SQLite-backed server for the Claro personal finance demo."""
+"""Small SQLite-backed server for the FINOVA personal finance demo."""
 from __future__ import annotations
 
 import hashlib
@@ -184,5 +184,5 @@ class Handler(SimpleHTTPRequestHandler):
 if __name__ == "__main__":
     init_db()
     address = ("127.0.0.1", 8001)
-    print(f"Claro disponible en http://localhost:{address[1]}")
+    print(f"FINOVA disponible en http://localhost:{address[1]}")
     ThreadingHTTPServer(address, Handler).serve_forever()
